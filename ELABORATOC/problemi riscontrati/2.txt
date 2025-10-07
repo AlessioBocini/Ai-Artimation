@@ -1,8 +1,0 @@
-Per quanto riguarda l'azione di cliccare su una coppia e poi mostrare la descrizione e le similarità, seppur intuitivamente sembra una cosa banale, richiede un'attimo di raccoglimento.
-Ci sono due soluzioni, si raccoglie le informazioni della coppia selezionata e:
-1. si inviano ad un'altra pagina preposta solo alla visualizzazione della coppia
-2. si mostrano i cambiamenti sulla stessa pagina in modo dinamico
-In ambedue i casi il problema resta difficile.
-Seppur a livello implementativo il primo caso risulti intuitivamente più banale, i casi di errore sono più difficili da gestire.
-Immagina se un individuo ricarica la pagina del risultato, qui si verrebbe a creare una situazione poco sostenibile.
-D'altronde il secondo caso è molto più complesso il nato implementativo di una certa dinamicità.

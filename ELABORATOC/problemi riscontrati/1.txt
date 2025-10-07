@@ -1,8 +1,0 @@
-in fase di sviluppo dell'indice, dovevo trovare un modo per presentare una lista di oggetti, dove ciascun oggetto non è altro che una coppia di opere con ciascuna il proprio artista ed un nome.
-La difficoltà in questo caso è stata quella di consentire ad una immagine ed un proprio testo di coesistere senza che l'uno collisionasse con l'altro, quindi si tratta del lato CSS.
-Immediatamente avevo pensato di usare usare un display: inline-flex in quanto sapevo di poter dare una direzione agli oggetti e disporli per colonna.
-Tale cosa però, che in teoria doveva funzionare, non funzionava.
-L'immagine aveva object-fit: contain quindi doveva occupare il suo spazio.
-Alla fine ho capito che però questo spazio occupato in realtà corrispondeva al tag "figure" che a sua volta conteneva ambedue gli elementi!
-Quindi ho pensato di inserire ambedue il testo e l'immagine in div differenti, sempre all'interno al tag "figure". 
-Questa è stata la soluzione al problema.
