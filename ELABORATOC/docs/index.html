@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>The Ai Artimation</title>
+        <meta name="keywords" content="ai, art, similarities, ppm exam"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel = "icon" href = "./img/title_logo.jpg" type = "image/x-icon">
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src ="./functions/functions.js"></script>
+
+        <link rel="stylesheet" href="./css/style.css" type="text/css">
+        <link rel="stylesheet" href="./css/contacts.css" type="text/css">
+        <link rel="stylesheet" href="./css/description.css" type="text/css">
+    </head>
+    <body>
+        <!-- INDEX PAGE -->
+        <nav class="menu">
+            <a href="#" onclick="toggleOnIndex()" id="homepage" class="current">Homepage</a>
+            <a href="#" onclick="toggleOnDescription()" id="pdescription">Project Description</a>
+            <a href="#" onclick="toggleOnContacts()" id="contacts">Contacts</a>
+        </nav>
+        <div id="index-page">
+            <div class="body_container">
+                <article class="top_page_description">
+                    <section class="top_page_info_container">
+                        <h1 class = "top_page_title">Ai Artimation</h1>
+                        <h2 class ="top_page_subtitle">Estimation of Art similarities with Ai</h2>
+                        <p>
+                            A website where the pinnacle of technology is put at the center, where art and technology go hand in hand.<br>
+                            The website has been  provided with a collection of paintings from which the algorithm of artificial intelligence can select various pairs of works and if they are similar, these will be displayed in a list and from this you can choose and access each of these to display their description and what else.<br>
+                            Under each pair of paintings there is a set of keywords related to that specific pair, and if you are curious and you are looking for a particular matching, you just need to type in the search bar a certain word or the name of an artist, all the pairs of paintings containing that specific keyword will be shown below.
+                        </p>
+                    </section>
+                </article>
+    
+                <!-- IMG AT THE TOP -->
+                <figure>
+                    <img src="./img/img1_top_description.jpg" id="display_top_img_1" alt ="Image of a drawing of Gian Giacomo Caprotti called Testa del figlio Redentore">
+                    <img src = "./img/img2_top_description.jpg" id="display_top_img_2" alt = "Image of a drawing presenting Vincent Van Gogh">
+                    <img src = "img/img3_top_description.jpg" id="display_top_img_3" alt="Image of a drawing of Rene Magritte called Il Figlio dell'uomo"> 
+                    <img src = "img/cpu.jpg" id="display_top_img_4" alt="Picture of a futuristic Computre Processor">
+                </figure>
+                
+                
+                <section class="bottom_description">
+                    <div class="bottom_description_text">
+                        <h2>Try it Now</h2>
+                        <p>select a pair of images from the list or look for a keyword of interest</p>
+                    </div>
+                    
+                </section >
+                        <input type="text" class="search-bar" id="search-bar" onkeyup="search()" placeholder="Search for keywords..">
+                        <input type="button" class="insert-painting" id="insert-painting" onclick="displayInsert()" value="Insert new Painting">
+                <section>
+                <table id="table-list-id">
+                    <tr class="list">
+                        
+                    </tr>
+    
+                </table>
+            </section>
+                
+
+                <!-- selected pair popup start -->
+                <div class="selected-pair-page">
+                    <div>
+                        <label id="selected-pair-score"></label>
+                    </div>
+                    <div class="selected-pair-container">
+                        <article class="selected-paint1">
+                            <div class="selected-img-container">
+                                <!-- IMG -->
+                                <img src="./img/test1.jpg" alt="#">
+                            </div>
+                            <hr />
+                            <div class="selected-text-part-1">
+                                <div class="selected-author-container">
+                                    <!-- Author + Painting name (date) -->
+                                    <label>Artist Name</label><br><label>Drawing Name</label>
+                                </div>
+                                <div class="selected-img-text">
+                                    <!-- TEXT -->
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapie<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapieLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapie</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="selected-paint2">
+                            <div class="selected-img-container">
+                                <!-- IMG -->
+                                <img src="./img/test2.jpg" alt="#">
+                            </div>
+                            <hr />
+                            <div class="selected-text-part-2">
+                                <div class="selected-author-container">
+                                    <!-- Author + Painting name (date) -->
+                                    <label>Artist Name</label><br><label>Drawing Name</label>
+                                </div>
+                                <div class="selected-img-text">
+                                    <!-- TEXT -->
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapieLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapieLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapie</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="bottom_description_button" id="button_reset_id">
+                        <input type="button" value="Close" onclick="toggle_visibility()"/>
+                    </div>
+                </div>
+                <!-- selected pair popup end -->
+
+            </div>
+        </div>
+        
+        <!-- pop up insert painting -->
+        <form id="popup-insert">
+            <label>Title:</label>
+            <input type="text" id="title-insert-popup" placeholder="Title of the painting..."><br>
+            <label>Artist Name:</label>
+            <input type="text" id="artist-insert-popup" placeholder="Name of the Artist.."><br>
+            <input type="file" id="files-insert-popup"><br>
+
+            <label>Description:</label><br>
+            <textarea rows="13" cols="60" style="resize: none;" id="textarea-insert-popup"></textarea>
+            <div id="button-area-popup-insert">
+                <input type="button" value="Cancel" onclick="CancelInsert()">
+                <input type="button" value="Submit" onclick="SubmitInsertPainting()">
+            </div>    
+        </form>
+        <!-- end pop up insert painting-->
+
+        <!-- FROM HERE ON THERE IS CONTACTS !! -->
+        <div id="contacts-page">
+            <section class="section-data">
+                <h2 class="title-people-container">Meet Our Team</h2>
+                <div class="people-container">
+                    
+                    <!-- <div class="bg-person"></div> -->
+                    <div class="person-info">
+                        <div class="person-description">
+                            Graduated as Computer Technician at ITS Tullio Buzzi High School in Prato, now student of Computer Engineering at the University of Florence.
+                        </div>
+                        <div class="picture-info">
+                            <div class="picture"><img src="./img/placeholder_picture.png" /></div>
+                            <div class="person-name">Alessio Bocini</div>
+                        </div>
+                    </div>
+                </div>
+                <h2>Contacts</h2>
+                <form id="contact_form" action="mailto:alessio.bocini@stud.unifi.it" method="get" class="contact-box">
+                    <div class="contact-box-child">
+                        <p style="font-weight: bold;">Email: <span>alessio.bocini@stud.unifi.it</span></p>
+                        <p style="font-weight: bold;">Cellphone: <span>111-111-1111</span></p>
+                        <h4>Contact us directly:</h4>
+                        <label for="inpemail" style="font-weight: bold;">Subject:</label><input type="text" id="inpemail" name="inpemail" value="[AiArtAmatour] Website"/><br>
+                        <label for="notesbox" style="font-weight: bold;">Content</label><br><textarea style="resize: none;" id="notesbox" name="notsbox" rows="15" cols="120" placeholder="Insert your text here..."></textarea>
+                    </div>
+                    <div>
+                        <input type="button" value="Submit" onclick="submitemail(this)" class="contact-button-submit"/> 
+                    </div>
+                </form>
+            </section>
+            <figure>
+                <img src="./img/img3_top_contacts.jpg" class="bg-image"/>
+                <img src="./img/contacts-decoration.jpg" id="img1_pos"/>
+                <img src="./img/contacts-decoration.jpg" id="img2_pos"/>
+                <img src="./img/contacts-decoration.jpg" id="img3_pos"/>
+            </figure>
+        </div>
+
+        <div id="pdescription-page">
+            <div class="body_container">
+                <article class="top_page_description">
+                    <section class="top_page_info_container">
+                        <h1 class = "top_page_title">Ai Artimation</h1>
+                        <h2 class ="top_page_subtitle">Estimation of Art similarities with Ai</h2>
+                        <p>
+                            A website where the pinnacle of technology is put at the center, where art and technology go hand in hand.<br>
+                            The website has been  provided with a collection of paintings from which the algorithm of artificial intelligence can select various pairs of works and if they are similar, these will be displayed in a list and from this you can choose and access each of these to display their description and what else.<br>
+                            Under each pair of paintings there is a set of keywords related to that specific pair, and if you are curious and you are looking for a particular matching, you just need to type in the search bar a certain word or the name of an artist, all the pairs of paintings containing that specific keyword will be shown below.
+                        </p>
+                    </section>
+                </article>
+                
+                
+    
+                <!-- IMG AT THE TOP -->
+                <figure>
+                    <img src="./img/img1_top_description.jpg" id="display_top_img_5" alt ="Image of a drawing of Gian Giacomo Caprotti called Testa del figlio Redentore">
+                    <img src = "./img/img2_top_description.jpg" id="display_top_img_6" alt = "Image of a drawing presenting Vincent Van Gogh">
+                    <img src = "img/img3_top_description.jpg" id="display_top_img_7" alt="Image of a drawing of Rene Magritte called Il Figlio dell'uomo"> 
+                    <img src = "img/cpu.jpg" id="display_top_img_8" alt="Picture of a futuristic Computre Processor">
+                </figure>
+
+                <!-- IMG AT THE BOTTOM -->
+                <figure>
+                    <img src="./img/descr-decoration.jpg" id="img4_pos"/>
+                    <img src="./img/descr-decoration.jpg" id="img5_pos"/>
+                </figure>
+
+                <h2 id="more_details_title" class="bottom-positioning-right">More Details</h2>
+                <div class="bottom-details-container">
+                    <article id="more-details-part" class="bottom-positioning-right">
+                            
+                            <section class="bottom-side-description">
+                                <p>
+                                    The website was fully built in html5 and css markup languages.<br>
+                                    When the website is opened, the algorithm of artificial intelligence will collect each work from the collection and it’ll calculate the similarity of each possible pair of works.<br>
+                                    The algorithm of Artificial intelligence we used was the Universal Sentence Encoder, which calculates the similarities of two or multiple texts depending on the repetition of words.<br>
+                                    Each painting is equipped with both a textual description and a set of tags, both will be the subjects of the calculation of the similarity.<br>
+                                    Two works may be similar either in terms of textual description or in terms of similar tags, so, the algorithm will calculate for each pair two distinct values of similarity.<br>
+                                    To simplify our objective, we will use a global value of similarity obtained by doing a weighted average of the two individual values of similarity.<br>
+                                    The decision to calculate  two distinct values of similarity, to start with, comes from two critical points regarding this algorithm, It’s not capable to take two different phrases with an equal meaning and tell they are equal yet and if two texts contain multiple punctuation marks and there is a wide use of conjunctions, their presence will affect positively the grade of similarity between texts despite these are not similar at all.<br>
+                                    An advantage in using this global value of similarity is that it’s possible to use a much higher threshold of acceptance.<br>
+                                    If a pair of works has a global value of similarity which crosses that said threshold, it’s classified as probable and so will be catalogued in the list of pairs shown in the website, and so explorable by the user.<br>
+                                    Each pair of paintings will have a set with at least one keyword, these will be the tags the paintings have in common.<br>
+                                    The existence of tags, becomes even more important when we begin to use the research system.<br>
+                                    When we search for a certain word, the list of displayed pairs will be reduced displaying only pairs which contain that specific word.
+                                </p>
+                            </section>
+                    </article>
+                </div>
+            </div>
+            
+        </div>
+
+        <footer>Alessio Bocini, 2022. All rights reserved.</footer>
+    </body>
+</html>

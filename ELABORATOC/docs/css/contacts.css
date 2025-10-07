@@ -1,0 +1,204 @@
+#contacts-page{
+    display: none;
+}
+
+.section-data{
+    background-image: linear-gradient(#fbf7d1 75%, white );
+    margin: 1em 0;
+    padding: 1em;
+}
+.title-people-container{
+    color: #0087f6;
+}
+/* start list people*/
+.people-container{
+    padding: 2em;
+}
+.bg-image{
+    /*width: 100%;*/
+    opacity: 0.3;
+    object-fit: cover;
+    height: 220px;
+    width: 90%;
+    object-position: 0 -200px;
+    z-index: 0;
+    position: absolute;
+    top: 120px;
+    left: 2em;
+}
+
+.person-info{
+    background-color: #ffffff;
+     position: relative;
+    border: 1px black solid;
+    display: inline-flex;
+    flex-flow: row wrap;
+    padding: 0.8em;
+    z-index: 10;
+}
+.person-description{
+    margin: 0 0.5em 0 0;
+    width: 200px;
+    z-index: 10;
+}
+
+.picture-info{
+    border: 1px solid black;
+    display: inline-flex;
+    flex-flow: column wrap;
+    padding: 1em;
+    z-index: 10;
+}
+.picture{
+    align-items: center;
+    vertical-align: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.picture img{
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+}
+.person-name{
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    z-index: 10;
+}
+/* end people list */
+
+/* start contact box */
+.contact-box{
+    background-color: white;
+    border: 1px solid black;
+    width: 90%;
+}
+.contact-box-child{
+    padding: 0.5em 1em;
+    font-size: 18px;
+    
+}
+.contact-box-child h4, .contact-box-child p{
+    margin:0;
+}
+.contact-box-child span{
+    font-weight: normal;
+}
+.contact-box-child h4, .contact-box-child p, #inpemail{
+    margin-bottom: 10px;
+}
+
+.contact-button-submit{
+    position: relative;
+    float: right;
+    bottom: 60px;
+    right: 60px;
+    background-color: white;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+}
+#inpemail{
+    margin-left: 1em;
+}
+.contact-button-submit:hover{
+    background-color: rgb(231, 230, 230);
+}
+.contact-button-submit:active{
+    background-color: rgb(206, 203, 203);
+}
+/* end contact box */
+
+
+
+
+/*start images*/
+#img1_pos, #img2_pos, #img3_pos{
+    position: absolute;
+}
+#img1_pos{
+    border-radius: 40% 45% 60% 50%;
+    top: 420px;
+    right: 150px;
+    width: 110px;
+    z-index: 10;
+}
+#img2_pos{
+    border-radius: 45% 60% 55% 70%;
+    width: 50px;
+    top: 480px;
+    right: 310px;
+    z-index: 10;
+}
+#img3_pos{
+    border-radius: 60% 45% 40% 40%;
+    top: 260px;
+    right: 280px;
+    z-index: 10;
+}
+#notesbox{
+    width: 70%;
+}
+/* end images */
+
+
+/* tablet size start */
+@media only screen and (max-width: 1000px) {
+    
+    #img3_pos, #img2_pos, #img1_pos{
+        display: none;
+    }
+    .title-people-container{
+        text-align: center;
+        font-size: 30px;
+    }
+    .section-data h2{
+        text-align: center;
+    }
+}
+
+/* tablet size end */
+
+/* mobile size start */
+@media only screen and (max-width: 728px) {
+    .bg-image{
+        margin: 20px 0 20px 0;
+        height: 550px;
+        width: 100%;
+        left: 0;
+    }
+    .person-info{
+        flex-flow: column-reverse wrap;
+    }
+    .person-description{
+        margin: 10px;
+    }
+    .contact-button-submit{
+        right: 10px;
+        width: 70px;
+    }
+    .section, .section-data{
+        margin:0;
+        padding:0;
+    }
+    .contact-box-child{
+        padding: 0.5em;
+    }
+    #contacts-page h2{
+        padding-top: 10px;
+    }
+    
+}
+
+@media only screen and (max-width: 460px) {
+
+    .contact-button-submit{
+        right: 10px;
+    }
+    
+    
+}
+
+/* mobile size end */
